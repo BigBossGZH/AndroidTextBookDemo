@@ -13,7 +13,6 @@ class  Book implements Parcelable{
     public int bookId;
     public String bookName;
     protected Book(Parcel in) {
-        Log.e("", "");
     }
 
     @Override
