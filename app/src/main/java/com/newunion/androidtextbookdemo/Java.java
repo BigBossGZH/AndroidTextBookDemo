@@ -2,6 +2,7 @@ package com.newunion.androidtextbookdemo;
 
 import android.os.Parcel;
 import android.os.Parcelable;
+import android.util.Log;
 
 /**
  * Created by Administrator on 2018/1/29 0029.
@@ -12,6 +13,7 @@ class  Book implements Parcelable{
     public int bookId;
     public String bookName;
     protected Book(Parcel in) {
+        Log.e("", "");
     }
 
     @Override
