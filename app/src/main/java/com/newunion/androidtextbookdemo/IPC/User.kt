@@ -13,8 +13,7 @@ import android.os.Parcelable
     constructor(parcel: Parcel) : this(
             parcel.readInt(),
             parcel.readString(),
-            parcel.readByte() != 0.toByte()) {
-    }
+            parcel.readByte() != 0.toByte())
 
     override fun writeToParcel(dest: Parcel, flags: Int) {
         dest.writeInt(userId)
