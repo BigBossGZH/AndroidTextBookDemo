@@ -9,7 +9,10 @@ import android.os.Parcelable
 class Book constructor() :Parcelable{
     lateinit var bookName: String
     var bookId =0
-    constructor(parcel: Parcel) : this()
+    constructor(parcel: Parcel) : this(){
+        bookId = parcel.readInt()
+        bookName = parcel.readString()
+    }
     constructor(bookId:Int,bookName:String) : this() {
         this.bookId = bookId
         this.bookName =bookName

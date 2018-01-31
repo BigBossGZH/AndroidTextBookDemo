@@ -1,23 +1,36 @@
 package com.newunion.androidtextbookdemo;
 
+import android.content.Intent;
+import android.os.Binder;
 import android.os.Parcel;
 import android.os.Parcelable;
+import android.os.RemoteException;
 import android.util.Log;
+
+import java.io.ObjectOutputStream;
+import java.util.List;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 /**
  * Created by Administrator on 2018/1/29 0029.
  */
 
-class  Book implements Parcelable{
+class Book extends Binder implements Parcelable {
 
     public int bookId;
     public String bookName;
+    CopyOnWriteArrayList<String> dd =  new CopyOnWriteArrayList<String>();
+
     protected Book(Parcel in) {
     }
 
+    ObjectOutputStream objectOutputStream;
+
     @Override
     public void writeToParcel(Parcel dest, int flags) {
+//        mListenerList.get(1)
     }
+
 
     @Override
     public int describeContents() {
