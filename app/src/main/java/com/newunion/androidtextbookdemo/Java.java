@@ -28,7 +28,14 @@ class Book extends Binder implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
-//        mListenerList.get(1)
+//        if (mRemoteBookManager!=null&&mRemoteBookManager.asBinder().isBinderAlive) {
+//            try {
+//                mRemoteBookManager.unregisterListener(mOnNewBookArrivedListener)
+//            } catch (e: RemoteException) {
+//                e.printStackTrace()
+//            }
+//
+//        }
     }
 
 
