@@ -19,7 +19,7 @@ import kotlinx.android.synthetic.main.activity_main.*
  */
 class BookManagerActivity : Activity() {
     companion object {
-        val TAG = "BookManagerActivityBookManagerActivity"
+        val TAG = "BookManagerActivity"
         val MESSAGE_NEW_BOOK_ARRIVED = 1
     }
 
