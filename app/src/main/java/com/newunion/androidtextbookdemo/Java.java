@@ -7,6 +7,8 @@ import android.os.Parcelable;
 import android.os.RemoteException;
 import android.util.Log;
 
+import com.newunion.androidtextbookdemo.IPC.Socket.TCPServerService;
+
 import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.util.List;
@@ -23,6 +25,13 @@ class Book extends Binder implements Parcelable {
     CopyOnWriteArrayList<String> dd =  new CopyOnWriteArrayList<String>();
 
     protected Book(Parcel in) {
+        new Thread(){
+            @Override
+            public void run() {
+                super.run();
+            }
+        }.start();
+
     }
 
     ObjectOutputStream objectOutputStream;

@@ -7,19 +7,20 @@ import android.os.Parcel
 import java.io.*
 import java.net.ServerSocket
 import java.net.Socket
+import java.util.*
 
 /**
  * Created by Administrator on 2018/2/26 0026.
  */
 var mISServiceDestoryed = false
+var mDefindeMessages = arrayOf("你好啊，哈哈",
+        "请问你叫什么名字呀？",
+        "今天北京天气不错啊，shy",
+        "你知道吗？我可是可以和多个人同时聊天的哦",
+        "给你讲个笑话吧：据说爱笑的人运气不会太差，不知道真假")
 
 class TCPServerService : Service() {
 
-    var mDefindeMessages = arrayOf("你好啊，哈哈",
-            "请问你叫什么名字呀？",
-            "今天北京天气不错啊，shy",
-            "你知道吗？我可是可以和多个人同时聊天的哦",
-            "给你讲个笑话吧：据说爱笑的人运气不会太差，不知道真假")
 
     override fun onBind(intent: Intent?): IBinder? {
         return null
@@ -52,13 +53,13 @@ class TcpServer : Runnable {
                 System.out.println("accept")
                 Thread() {
                     try {
-//                        resp
+                        responseClient(client)
                     } catch (e: IOException) {
                         e.printStackTrace()
                     }
-                }
+                }.start()
             } catch (e: Exception) {
-
+                e.printStackTrace()
             }
         }
     }
@@ -70,13 +71,19 @@ class TcpServer : Runnable {
         out.println("欢迎来到聊天室")
         while (!mISServiceDestoryed) {
             var str = bufferedReader.readLine()
-            System.out.println("msg from client: "+str)
+            System.out.println("msg from client: " + str)
             if (str == null) {
                 //客户端断开连接
                 break;
             }
-
+            var i = Random().nextInt(mDefindeMessages.size)
+            var msg = mDefindeMessages[i]
+            out.println(msg)
+            System.out.println("send : " + msg)
         }
+        System.out.println("client quit.")
+        out.close()
+        bufferedReader.close()
+        client.close()
     }
-
 }
